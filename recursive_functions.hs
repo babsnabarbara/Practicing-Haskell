@@ -95,3 +95,25 @@ insert n (x:xs)
 insertionsort :: [Int] -> [Int]
 insertionsort [] = []
 insertionsort (x:xs) = insert x (insertionsort xs)
+
+sum1 :: Num a => [a] -> a
+sum1 [] = 0
+sum1 (x:xs) = x + sum1 xs
+
+sum2 :: Num a => [a] -> a
+sum2 = foldr (+) 0 
+
+drop2 :: Int -> [a] -> [a]
+drop2 _ [] = []
+drop2 0 xs = xs
+drop2 n (_:xs) = drop2 (n-1) xs 
+
+init1 :: [a] -> [a]
+init1 [] = []
+init1 [_] = []
+init1 (x:xs) = x : init xs 
+
+--init for a non-empty list
+init2 :: [a] -> [a]
+init2 (x:xs) | null xs = []
+             | otherwise = x : init2 xs
